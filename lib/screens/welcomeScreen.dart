@@ -1,5 +1,4 @@
 import 'package:appointment_scheduler/screens/RegistrationPage.dart';
-import 'package:appointment_scheduler/screens/loginScreen.dart';
 import 'package:flutter/material.dart';
 
 class welcomeScreen extends StatelessWidget {
@@ -51,7 +50,7 @@ class welcomeScreen extends StatelessWidget {
                   MaterialButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => loginScreen(),
+                        builder: (context) => RegistrationPage(),
                       ));
                     },
                     color: Color(0xffffffff),
@@ -76,10 +75,11 @@ class welcomeScreen extends StatelessWidget {
                   MaterialButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => RegistrationPage(),
-                          ));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RegistrationPage(),
+                        ),
+                      );
                     },
                     color: Color(0xff000000),
                     elevation: 0,

@@ -1,54 +1,80 @@
+import 'package:appointment_scheduler/screens/dashboardScreen.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationPage extends StatelessWidget {
-  final String? email;
-  final String? password;
-
-  RegistrationPage({this.email, this.password});
+  const RegistrationPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final emailController = TextEditingController(text: email);
-    final passwordController = TextEditingController(text: password);
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Registration'),
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                controller: emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                ),
+      backgroundColor: Colors.grey[300],
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 50),
+                  Text(
+                    'Registration',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 50),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Email',
+                      labelText: 'Email',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      labelText: 'Password',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Navigate to the destination page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => dashboardScreen(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 16.0,
+                        horizontal: 40.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      primary: Colors.blue,
+                    ),
+                    child: Text(
+                      'Register',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 16),
-              TextField(
-                controller: passwordController,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                ),
-                obscureText: true,
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  // Perform registration logic here
-                  String enteredEmail = emailController.text;
-                  String enteredPassword = passwordController.text;
-
-                  // Replace with your actual registration logic
-                  print('Email: $enteredEmail');
-                  print('Password: $enteredPassword');
-                },
-                child: Text('Register'),
-              ),
-            ],
+            ),
           ),
         ),
       ),

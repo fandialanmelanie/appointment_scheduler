@@ -1,16 +1,8 @@
+import 'package:appointment_scheduler/screens/dashboardScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'MyButton.dart';
-import 'MyTextField.dart';
-import 'RegistrationPage.dart';
-import 'SquareTile.dart';
-
 class loginScreen extends StatelessWidget {
-  loginScreen({Key? key}) : super(key: key);
-
-  // text editing controllers
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+  const loginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,145 +17,59 @@ class loginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 50),
-
-                  // logo
-                  const Icon(
-                    Icons.calendar_month,
-                    size: 100,
-                  ),
-
-                  const SizedBox(height: 50),
-
-                  // welcome back, you've been missed!
                   Text(
-                    'Appointment Scheduler',
+                    'Login',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 25,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-
-                  const SizedBox(height: 25),
-
-                  // username textfield
-                  MyTextField(
-                    controller: usernameController,
-                    hintText: 'Username',
-                    obscureText: false,
+                  const SizedBox(height: 50),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Username',
+                      labelText: 'Username',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
-
-                  const SizedBox(height: 10),
-
-                  // password textfield
-                  MyTextField(
-                    controller: passwordController,
-                    hintText: 'Password',
+                  const SizedBox(height: 20),
+                  TextField(
                     obscureText: true,
-                  ),
-
-                  const SizedBox(height: 10),
-
-                  // forgot password?
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          'Forgot Password?',
-                          style: TextStyle(color: Colors.grey[600]),
-                        ),
-                      ],
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      labelText: 'Password',
+                      border: OutlineInputBorder(),
                     ),
                   ),
-
-                  const SizedBox(height: 25),
-
-                  // sign in button
-                  MyButton(
-                    onTap: () {
-                      // Perform sign-in logic
-                    },
-                  ),
-
-                  const SizedBox(height: 50),
-
-                  // or continue with
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Divider(
-                            thickness: 0.5,
-                            color: Colors.grey[400],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Text(
-                            'Or continue with',
-                            style: TextStyle(color: Colors.grey[700]),
-                          ),
-                        ),
-                        Expanded(
-                          child: Divider(
-                            thickness: 0.5,
-                            color: Colors.grey[400],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(height: 50),
-
-                  // google + apple sign in buttons
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      // google button
-                      SquareTile(imagePath: 'lib/images/google.png'),
-
-                      SizedBox(width: 25),
-
-                      // apple button
-                      SquareTile(imagePath: 'lib/images/apple.png')
-                    ],
-                  ),
-
-                  const SizedBox(height: 50),
-
-                  // not a member? register now
-                  GestureDetector(
-                    onTap: () {
-                      // Navigate to the registration screen
+                  const SizedBox(height: 30),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Navigate to the destination page
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RegistrationPage(
-                            email: usernameController.text,
-                            password: passwordController.text,
-                          ),
+                          builder: (context) => dashboardScreen(),
                         ),
                       );
                     },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Not a member?',
-                          style: TextStyle(color: Colors.grey[700]),
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          'Register now',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 16.0,
+                        horizontal: 40.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      primary: Colors.blue,
+                    ),
+                    child: Text(
+                      'Login',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
